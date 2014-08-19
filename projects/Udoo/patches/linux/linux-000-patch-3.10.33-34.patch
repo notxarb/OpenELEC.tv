@@ -10,19 +10,6 @@ index 1e602eb906fa..571a1bf14868 100644
  EXTRAVERSION =
  NAME = TOSSUG Baby Fish
  
-diff --git a/arch/arm/include/asm/spinlock.h b/arch/arm/include/asm/spinlock.h
-index dd64cc6f9cba..b07c09e5a0ac 100644
---- a/arch/arm/include/asm/spinlock.h
-+++ b/arch/arm/include/asm/spinlock.h
-@@ -107,7 +107,7 @@ static inline int arch_spin_trylock(arch_spinlock_t *lock)
- 		"	subs	%1, %0, %0, ror #16\n"
- 		"	addeq	%0, %0, %4\n"
- 		"	strexeq	%2, %0, [%3]"
--		: "=&r" (slock), "=&r" (contended), "=r" (res)
-+		: "=&r" (slock), "=&r" (contended), "=&r" (res)
- 		: "r" (&lock->slock), "I" (1 << TICKET_SHIFT)
- 		: "cc");
- 	} while (res);
 diff --git a/arch/arm/kernel/setup.c b/arch/arm/kernel/setup.c
 index b4b1d397592b..eb83bcc70ec8 100644
 --- a/arch/arm/kernel/setup.c

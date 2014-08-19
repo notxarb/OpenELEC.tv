@@ -654,28 +654,6 @@ index 36a0b438e65e..11ae0811e4bf 100644
  	pci_read_config_dword(tp->pdev, TG3PCI_PCISTATE,
  			      &pci_state_reg);
  	if ((pci_state_reg & PCISTATE_CONV_PCI_MODE) == 0 &&
-diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethernet/freescale/fec_main.c
-index d48099f03b7f..fbd0d7df67d8 100644
---- a/drivers/net/ethernet/freescale/fec_main.c
-+++ b/drivers/net/ethernet/freescale/fec_main.c
-@@ -371,6 +371,8 @@ fec_enet_start_xmit(struct sk_buff *skb, struct net_device *ndev)
- 	else
- 		bdp = fec_enet_get_nextdesc(bdp, fep->bufdesc_ex);
- 
-+	skb_tx_timestamp(skb);
-+
- 	fep->cur_tx = bdp;
- 
- 	if (fep->cur_tx == fep->dirty_tx)
-@@ -379,8 +381,6 @@ fec_enet_start_xmit(struct sk_buff *skb, struct net_device *ndev)
- 	/* Trigger transmission start */
- 	writel(0, fep->hwp + FEC_X_DES_ACTIVE);
- 
--	skb_tx_timestamp(skb);
--
- 	return NETDEV_TX_OK;
- }
- 
 diff --git a/drivers/net/ethernet/ibm/ehea/ehea_main.c b/drivers/net/ethernet/ibm/ehea/ehea_main.c
 index 90ea0b1673ca..716dae7b9d8e 100644
 --- a/drivers/net/ethernet/ibm/ehea/ehea_main.c
