@@ -22,6 +22,10 @@ case "$LINUX" in
     PKG_VERSION="cuboxi-a5afa23"
     PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
     ;;
+  Udoo)
+    PKG_VERSION="3.10.17"
+    PKG_URL="https://github.com/mtx512/linux-imx/archive/$PKG_NAME-$PKG_VERSION.tar.gz"
+    ;;
   *)
     PKG_VERSION="3.16.1"
     PKG_URL="http://www.kernel.org/pub/linux/kernel/v3.x/$PKG_NAME-$PKG_VERSION.tar.xz"
@@ -146,7 +150,7 @@ make_target() {
 
       # dont use some optimizations because of build problems
         strip_lto
-        LDFLAGS=`echo $LDFLAGS | sed -e "s|-Wl,--as-needed||"`
+        # LDFLAGS=`echo $LDFLAGS | sed -e "s|-Wl,--as-needed||"`
 
       export FLAGSGLIBC="$CFLAGS -I$SYSROOT_PREFIX/usr/include"
       export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include"

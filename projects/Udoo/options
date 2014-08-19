@@ -83,22 +83,22 @@
   BOOTLOADER="u-boot"
 
 # u-boot version to use (default)
-  UBOOT_VERSION="imx6"
+  UBOOT_VERSION="Udoo"
 
 # Configuration for u-boot
-  UBOOT_CONFIG="udoo_quad"
+  UBOOT_CONFIG="udoo_quad_config"
 
 # Target Configfile for u-boot
-  UBOOT_CONFIGFILE=""
+  UBOOT_CONFIGFILE="boot.scr"
 
 # Kernel target for u-boot (default 'uImage' if BOOTLOADER=u-boot) (uImage / zImage)
   KERNEL_UBOOT_TARGET="uImage"
 
 # Kernel extra targets to build
-  KERNEL_UBOOT_EXTRA_TARGET=""
+  KERNEL_UBOOT_EXTRA_TARGET="imx6q-udoo.dtb"
 
 # Additional kernel make parameters (for example to specify the u-boot loadaddress)
-  KERNEL_MAKE_EXTRACMD=""
+  KERNEL_MAKE_EXTRACMD="UIMAGE_LOADADDR=0x10008000"
 
 # GCC to use. values can be:
 # default:  default mainline gcc
@@ -106,7 +106,7 @@
 
 # Kernel to use. values can be:
 # default:  default mainline kernel
-  LINUX="imx6"
+  LINUX="Udoo"
 
 # use linux-next (latest rc) instead latest released version
   LINUX_NEXT="no"

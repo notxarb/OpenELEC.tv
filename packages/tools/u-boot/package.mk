@@ -25,6 +25,10 @@ elif [ "$UBOOT_VERSION" = "imx6-cuboxi" ]; then
   PKG_VERSION="imx6-ed888a1"
   PKG_SITE="http://imx.solid-run.com/wiki/index.php?title=Building_the_kernel_and_u-boot_for_the_CuBox-i_and_the_HummingBoard"
   PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
+elif [ "$UBOOT_VERSION" = "Udoo" ]; then
+  PKG_VERSION="2013"
+  PKG_SITE="https://github.com/UDOOboard/U-Boot_Unico-2013/"
+  PKG_URL="https://github.com/UDOOboard/U-Boot_Unico-2013/archive/u-boot-2013.tar.gz"
 fi
 PKG_REV="1"
 PKG_ARCH="arm"
@@ -84,6 +88,7 @@ makeinstall_target() {
 
   if [ -f "./u-boot.imx" ]; then
     cp ./u-boot.imx $INSTALL/usr/share/bootloader
+    cp ./u-boot.imx u-boot.img
   fi
 
   if [ -f "./u-boot.img" ]; then
